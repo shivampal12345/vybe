@@ -28,7 +28,7 @@ import Notifications from './pages/Notifications'
 import { setNotificationData } from './redux/userSlice'
 
 
-export const serverUrl = "http://localhost:8000"
+export const serverUrl = "https://vybe-backend-g1tz.onrender.com"
 
 const App = () => {
   GetCurrentUser();
