@@ -1,0 +1,25 @@
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+dotenv.config();
+
+// Create a test account or replace with real credentials.
+const transporter = nodemailer.createTransport({
+    service: "Gmail",
+  port: 465,
+  secure: true, // true for 465, false for other ports
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+const sendMail = async(to,otp)=>{
+  await  transporter.sendMail({
+        from:`${process.env.EMAIL}`,
+        to,
+        subject: "Reset Your Password",
+        html:`<p>Yor OTP for password rest is <b>${otp}</b>.It expires in 5 minutes</p>`
+    })
+}
+
+export default sendMail;
